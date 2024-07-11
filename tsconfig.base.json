@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "noErrorTruncation": false,
+
+    /* Emit */
+    "incremental": true,
+    "declaration": true,
+    "sourceMap": true,
+
+    /* Core Config */
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "lib": [ "ES2022" ],
+
+    /* Options */
+    "strict": true,
+    "preserveConstEnums": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "preserveSymlinks": true,
+    "noImplicitOverride": true,
+    "resolveJsonModule": true,
+    "useUnknownInCatchVariables": false
+  }
+}

@@ -1,0 +1,55 @@
+node_modules/
+
+# environments
+.env
+.env.*
+!.env.example
+.env*.local
+.env.staging
+.env.uat
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Built
+coverage
+*.tsbuildinfo
+built/
+dist/
+cdk.context.json
+.remix/
+
+# Extensions
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+# Personal
+.vscode
+.idea
+old
+TODO.md
+
+# Junk
+package-lock.json
+temp/
+.DS_Store
+tmp
+
+# N/A
+# File-based project format
+*.iws
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
