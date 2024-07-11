@@ -1,10 +1,10 @@
 # yarn-fix-bin-cmds
 
-Yarn currently has an issue [#4564](https://github.com/yarnpkg/yarn/issues/4564) which can cause commands to fail during
-lifecycle scripts or in other operations when working with a workspace on Windows.
+Yarn currently has an issue \([#4564](https://github.com/yarnpkg/yarn/issues/4564)\) which can cause commands to fail
+during lifecycle scripts or in other operations when working with a workspace on Windows.
 
 This occurs because symlinked dependency directories created for workspaces are not resolved to the realpath in the 
-output `node_modules/.bin/my-cmd.cmd` files.
+output `node_modules/.bin/*.cmd` files.
 
 Consequently, in some cases, the relative paths will fail, because it tries to resolve from the symlinked directory 
 (eg. `root/node_modules/@my-scope/my-pkg/node_modules/.bin`) as opposed to the real path (eg. `root/workspaces/my-pkg/node_modules/.bin`).
@@ -18,8 +18,8 @@ Additionally, if another version of yarn isn't working with this, please file an
 
 ## Issue Detail
 
-A [preliminary PR](https://github.com/yarnpkg/yarn/pull/9078) has been submitted, but it seems likely that it won't be 
-addressed for some time. This package is a workaround for the issue until it is resolved.
+A [preliminary PR](https://github.com/yarnpkg/yarn/pull/9078) has been submitted to Yarn 1, but it seems likely that it 
+won't be addressed for some time. This package is a workaround for the issue until it is resolved.
 
 ## Usage
 
