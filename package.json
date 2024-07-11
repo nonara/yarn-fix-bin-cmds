@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "description": "Fixes the bin .cmd files for windows systems to work when executed from symlink dir (see yarn issue: #4564)",
   "main": "dist/main.js",
+  "license": "MIT",
   "scripts": {
     "compile": "tsc",
     "build": "yarn run clean && yarn run compile",

@@ -25,8 +25,10 @@ won't be addressed for some time. This package is a workaround for the issue unt
 
 ### Method 1 
 
-You can generally use this package as a simple post-install script in workspaces which need it:
+You can generally use this package as a in a lifecycle script (eg `preinstall`, `postinstall`, `prepare`, etc,) in the 
+`package.json` for the workspaces which need it.
 
+eg.
 ```json
 {
   "scripts": {
@@ -35,8 +37,9 @@ You can generally use this package as a simple post-install script in workspaces
 }
 ```
 
-Make sure you add a nohoist entry for this package in your workspaces `package.json`:
+If you have any issues, you can also add a nohoist entry for this package in your root `package.json`:
 
+eg.
 ```json
 {
   "workspaces": {
