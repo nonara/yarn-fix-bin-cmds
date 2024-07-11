@@ -6,8 +6,10 @@
   "scripts": {
     "compile": "tsc",
     "build": "yarn run clean && yarn run compile",
-    "clean": "npx -y rimraf -f dist",
+    "test": "jest",
     "------------- ": "-------------",
+    "clean": "npx -y rimraf -g dist",
+    "-------------  ": "-------------",
     "release": "standard-version"
   },
   "bin": {
