@@ -27,7 +27,7 @@
     "mock-fs": "^5.2.0",
     "@types/mock-fs": "^4.13.4",
     "ts-node": "^10.9.2",
-    "rimraf": "^6.0.1",
+    "rimraf": "^5.0.9",
     "standard-version": "^9.5.0"
   }
 }
