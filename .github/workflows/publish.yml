@@ -1,6 +1,7 @@
 name: Publish (NPM)
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - v*.*.*
@@ -35,7 +36,7 @@ jobs:
         run: npx extract-changelog-release > RELEASE_BODY.md
 
       - name: Publish to NPM
-        run: yarn publish dist --non-interactive
+        run: yarn publish --non-interactive
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
