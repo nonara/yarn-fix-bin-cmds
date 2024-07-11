@@ -1,6 +1,6 @@
 {
   "name": "yarn-fix-bin-cmds",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fixes the bin .cmd files for windows systems to work when executed from symlink dir (see yarn issue: #4564)",
   "main": "dist/main.js",
   "scripts": {
