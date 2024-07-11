@@ -1,6 +1,6 @@
 import { spawnSync } from 'child_process';
 import path from "path";
-import { createProject, teardownProject } from "../src/create-fs";
+import { createProject, teardownProject } from "../src/create-project";
 import * as os from "node:os";
 
 
