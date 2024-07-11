@@ -56,34 +56,41 @@ function findFirstJunction(paths: string[], isVerbose?: boolean): string | undef
 export function run(opt: Options) {
   let binPaths: string[];
 
+  /* Handle specified files */
   if (opt.file) {
     opt.file.forEach(file => {
       const fullPath = path.resolve(process.cwd(), file);
       fixCmdFile(fullPath, opt.verbose);
     });
-  } else {
-    if (opt.path) {
-      binPaths = opt.path;
 
-      if (opt.verbose) console.log('binPaths:', binPaths);
+    return;
+  }
+  /* Handle bin paths */
+  else if (opt.path) {
+    binPaths = opt.path;
 
-      binPaths.forEach(p => {
-        fixCmdFilesInBin(p, opt.verbose);
-      });
-    } else {
-      if (!process.env.PATH) throw new Error('No PATH environment variable found.');
-      binPaths = process.env.PATH?.split(path.delimiter).filter(p => p.includes('\\node_modules\\.bin'));
+    if (opt.verbose) console.log('binPaths:', binPaths);
 
-      if (opt.verbose) console.log('binPaths:', binPaths);
+    binPaths.forEach(p => {
+      fixCmdFilesInBin(p, opt.verbose);
+    });
 
-      const junctionPath = findFirstJunction(binPaths, opt.verbose);
-      if (!junctionPath) {
-        if (opt.verbose) console.log('No junction found in PATH');
-        return;
-      }
+    return;
+  }
+  /* Handle PATH */
+  else {
+    if (!process.env.PATH) throw new Error('No PATH environment variable found.');
+    binPaths = process.env.PATH?.split(path.delimiter).filter(p => p.includes('\\node_modules\\.bin'));
 
-      fixCmdFilesInBin(junctionPath, opt.verbose);
+    if (opt.verbose) console.log('binPaths:', binPaths);
+
+    const junctionPath = findFirstJunction(binPaths, opt.verbose);
+    if (!junctionPath) {
+      if (opt.verbose) console.log('No junction found in PATH');
+      return;
     }
+
+    fixCmdFilesInBin(junctionPath, opt.verbose);
   }
 }
 
