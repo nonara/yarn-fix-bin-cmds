@@ -13,8 +13,14 @@
     "release": "standard-version"
   },
   "bin": {
-    "yarn-fix-bin-cmds": "dist/main.js"
+    "yarn-fix-bin-cmds": "./dist/main.js"
   },
+  "files": [
+    "dist",
+    "yarn.lock",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "dependencies": {
     "commander": "^12.1.0",
     "@types/node": "^20.14.10",
