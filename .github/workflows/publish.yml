@@ -1,0 +1,39 @@
+name: Publish (NPM)
+
+on:
+  push:
+    tags:
+      - v*.*.*
+
+jobs:
+  publish:
+    runs-on: windows-latest
+
+    steps:
+      - name: TBD
+        run: echo TBD
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js to publish to npmjs.org
+        uses: actions/setup-node@v1
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Packages
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build
+
+      - name: Test
+        run: yarn run test
+        env:
+          CI: true
+
+      - name: Publish to NPM
+        run: yarn run publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
