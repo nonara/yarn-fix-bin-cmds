@@ -10,9 +10,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: TBD
-        run: echo TBD
-
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -32,8 +29,19 @@ jobs:
         run: yarn run test
         env:
           CI: true
+          FORCE_COLOR: 1
+
+      - name: Generate Release Body
+        run: npx extract-changelog-release > RELEASE_BODY.md
 
       - name: Publish to NPM
-        run: yarn run publish
+        run: yarn publish dist --non-interactive
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          bodyFile: "RELEASE_BODY.md"
+          token: ${{ secrets.GITHUB_TOKEN }}
+
