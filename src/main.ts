@@ -97,6 +97,7 @@ export function run(opt: Options) {
 // Run if called directly
 if (require.main == module) {
   program
+    .name('yarn-fix-bin-cmds')
     .version(require('../package.json').version)
     .description('Fixes the bin .cmd files for windows systems to work when executed from symlink dir (see yarn issue: #4564)');
 
